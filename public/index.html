@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="bg">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LRS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1>Lumbar Reheniation Score</h1>
+    <button onclick="scrollToForm()">ЗАЯВИ КОНСУЛТАЦИЯ</button>
+</header>
+
+<!-- Clinical Trials Section -->
+<div class="clinical-trials">
+    <h2>Информация за Клинични Проучвания</h2>
+    <p>LRS e първият в света инструмент базиран на machine learning, за оценка на риска от рехерниация при пациенти с лумбална дискова херния.</p>
+</div>
+
+<!-- Scrolling Articles Section -->
+<div class="article-section">
+    <h2>Статии и публикации</h2>
+    <div class="articles-wrapper">
+        <div class="article-card">
+            <img src="article1.jpg" alt="Article 1">
+            <h3>Клинично Проучване A</h3>
+            <p>Кратко описание на проучването и неговите резултати.</p>
+            <a href="#">Прочетете повече</a>
+        </div>
+        <div class="article-card">
+            <img src="article2.jpg" alt="Article 2">
+            <h3>Клинично Проучване B</h3>
+            <p>Информация за иновативните методи в това проучване.</p>
+            <a href="#">Прочетете повече</a>
+        </div>
+    </div>
+</div>
+
+<!-- Doctor Information Section -->
+<section class="doctors-section">
+    <h2>Нашите лекари</h2>
+    <div class="doctors-wrapper">
+        <div class="doctor-card">
+            <img src="doctor1.jpg" alt="Doctor 1">
+            <h3>Д-р A</h3>
+            <p>A biography</p>
+        </div>
+        <div class="doctor-card">
+            <img src="doctor2.jpg" alt="Doctor 2">
+            <h3>Д-р B</h3>
+            <p>B biography</p>
+        </div>
+        <div class="doctor-card">
+            <img src="doctor3.jpg" alt="Doctor 3">
+            <h3>Д-р C</h3>
+            <p>C biography</p>
+        </div>
+        <div class="doctor-card">
+            <img src="doctor4.jpg" alt="Doctor 4">
+            <h3>Д-р D</h3>
+            <p>D biography</p>
+        </div>
+        <div class="doctor-card">
+            <img src="doctor5.jpg" alt="Doctor 5">
+            <h3>Д-р E</h3>
+            <p>E biography</p>
+        </div>
+    </div>
+</section>
+
+<!-- Form Section -->
+<div class="form-container" id="appointmentForm">
+    <h2 class="form-header">Форма за Заявка на Консултация</h2>
+    <form id="appointmentForm">
+        <label class="required-star">Име и Фамилия</label>
+        <input type="text" name="full_name" required>
+        <span class="required-star">*Това поле е задължително.</span>
+    
+        <label class="required-star">Пол</label>
+        <select name="gender" required>
+            <option value="мъж">Мъж</option>
+            <option value="жена">Жена</option>
+        </select>
+        <span class="required-star">*Това поле е задължително.</span>
+    
+        <label class="required-star">Години</label>
+        <input type="number" name="age" required>
+        <span class="required-star">*Това поле е задължително.</span>
+    
+        <label class="required-star">Тютюнопушене през последните 2 години</label>
+        <select name="smoking_status" required>
+            <option value="да">Да</option>
+            <option value="не">Не</option>
+        </select>
+        <span class="required-star">*Това поле е задължително.</span>
+    
+        <label class="required-star">Диабет</label>
+        <select name="diabetes_type" required>
+            <option value="няма">Няма</option>
+            <option value="тип 1">Тип 1</option>
+            <option value="тип 2">Тип 2</option>
+        </select>
+        <span class="required-star">*Това поле е задължително.</span>
+    
+        <label for="concerns">Кратко описание</label>
+        <textarea id="concerns" name="concerns" rows="4" required></textarea>
+        <span class="required-star">*Това поле е задължително.</span>
+    
+        <label for="links">Свързани линкове</label>
+        <input type="text" id="document_links" name="document_links">
+    
+        <label class="required-star">Телефонен номер</label>
+        <input type="text" id="phone_number" name="phone_number" required>
+        <span class="required-star">*Това поле е задължително.</span>
+    
+        <label class="required-star">Имейл</label>
+        <input type="email" id="email" name="email" required>
+        <span class="required-star">*Това поле е задължително.</span>
+    
+        <label class="required-star">Дата на предходна операция (ако има такава)</label>
+        <input type="date" name="previous_surgery_date">
+    
+        <label class="terms-label">
+            <input type="checkbox" id="terms_accepted" required>
+            Приемам<a href="#" id="terms-link"> " общите условия "</a>и се съгласявам с тях.
+        </label>
+        <span class="required-star">*Това поле е задължително.</span>
+    
+        <button type="submit">Заяви консултация</button>
+    </form>    
+</div>
+
+<!-- Modal for Terms and Conditions -->
+<div id="termsModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Общи Условия</h2>
+        <p>Това са условията</p>
+        <button id="close-terms">Затвори</button>
+    </div>
+</div>
+
+
+<script>
+    // Validate phone number field
+    const phoneNumberInput = document.getElementById('phone_number');
+    phoneNumberInput.addEventListener('input', function() {
+        const phoneNumber = this.value;
+        const phoneError = this.nextElementSibling;
+        if (phoneNumber.length >= 10 && phoneNumber.length <= 13 && /^(\+?\d{1,3})?0?\d{9,12}$/.test(phoneNumber)) {
+            phoneError.style.display = 'none';
+        } else {
+            phoneError.style.display = 'inline';
+            phoneError.textContent = '*Моля въведете валиден телефонен номер.';
+        }
+    });
+</script>
+
+
+<script>
+// Scroll to the form when the button in the header is clicked
+function scrollToForm() {
+    document.getElementById("appointmentForm").scrollIntoView({ behavior: 'smooth' });
+}
+
+
+// Modal handling for terms acceptance
+const termsLink = document.getElementById('terms-link');
+const termsModal = document.getElementById('termsModal');
+const closeTerms = document.querySelector('.close');
+const closeTermsButton = document.getElementById('close-terms');
+
+termsLink.onclick = function(event) {
+    event.preventDefault(); // Prevent link navigation
+    termsModal.style.display = "block";
+}
+
+closeTerms.onclick = function() {
+    termsModal.style.display = "none";
+}
+
+closeTermsButton.onclick = function() {
+    termsModal.style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target == termsModal) {
+        termsModal.style.display = "none";
+    }
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/umd/supabase.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
