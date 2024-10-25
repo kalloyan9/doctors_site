@@ -11,6 +11,7 @@
             padding: 0;
             background-color: #f4f4f4;
         }
+
         header {
             background-color: #3498db;
             color: white;
@@ -18,9 +19,11 @@
             text-align: center;
             position: relative;
         }
+
         header h1 {
             margin: 0;
         }
+
         header button {
             position: absolute;
             top: 20px;
@@ -32,30 +35,134 @@
             cursor: pointer;
             font-size: 16px;
         }
-        section {
-            display: flex;
+
+        /* Clinical Trials Section */
+        .clinical-trials {
+            background-color: #fff;
+            padding: 40px;
             margin: 40px;
-            background-color: white;
-            padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
         }
-        section img {
-            max-width: 200px;
-            margin-right: 20px;
-            border-radius: 50%;
-        }
-        section div {
-            max-width: 600px;
-        }
-        section h2 {
-            margin-top: 0;
+
+        .clinical-trials h2 {
+            text-align: center;
             color: #2c3e50;
         }
-        section p {
+
+        .clinical-trials p {
+            text-align: center;
             color: #7f8c8d;
-            line-height: 1.6;
+            font-size: 18px;
+            line-height: 1.5;
         }
+
+        /* Scrolling Articles Section */
+        .article-section {
+            background-color: #fff;
+            padding: 40px;
+            margin: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .article-section h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        .articles-wrapper {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding-top: 20px;
+            scroll-behavior: smooth;
+        }
+
+        .article-card {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            flex: 0 0 250px;
+            text-align: center;
+        }
+
+        .article-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .article-card h3 {
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+
+        .article-card p {
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+
+        .article-card a {
+            text-decoration: none;
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .article-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Doctor Section - Horizontal Layout */
+        .doctors-section {
+            background-color: white;
+            padding: 40px;
+            margin: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .doctors-section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #2c3e50;
+        }
+
+        .doctors-wrapper {
+            display: flex;
+            gap: 20px;
+            justify-content: space-between;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+        }
+
+        .doctor-card {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            flex: 0 0 200px;
+        }
+
+        .doctor-card img {
+            max-width: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .doctor-card h3 {
+            color: #3498db;
+            margin: 10px 0;
+        }
+
+        .doctor-card p {
+            color: #7f8c8d;
+        }
+
+        /* Form Styles */
         .form-container {
             background-color: white;
             padding: 40px;
@@ -63,10 +170,12 @@
             border-radius: 10px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
         }
+
         form label {
             display: block;
             margin: 10px 0 5px;
         }
+
         form input, form select, form textarea {
             width: 100%;
             padding: 10px;
@@ -74,9 +183,7 @@
             border: 1px solid #bdc3c7;
             border-radius: 5px;
         }
-        form input[type="checkbox"] {
-            width: auto;
-        }
+
         form button {
             background-color: #2ecc71;
             color: white;
@@ -86,47 +193,140 @@
             font-size: 16px;
             border-radius: 5px;
         }
+
+        /* Modal for Terms and Conditions */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover, .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Red star for required fields */
+        .required-star::after {
+            content: " *";
+            color: red;
+        }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Иновации в клиничните проучвания</h1>
+    <h1>Lumbar Reheniation Score</h1>
     <button onclick="scrollToForm()">ЗАЯВИ КОНСУЛТАЦИЯ</button>
 </header>
 
-<section>
-    <img src="meh.png" alt="д-р Ангел Механджийски">
-    <div>
-        <h2>За д-р Ангел Механджийски</h2>
-        <p>Д-р Ангел Механджийски е роден през 1994 г. в София, България. Завършва Националната природо-математическа гимназия в София, като завоюва златен медал на Националната олимпиада по биолоия през 2013та в град Русе и по-късно придобива медицинско образование от Медицинския университет в София. Още от самото начало на следването си работи и специализира като неврохирург в УМБАЛСМ "Н.И. Пирогов" и публикува редица статии и научни трудове в сферата на неврохирургията. Също така играе основна роля в иновативни клинични проучвания и множество други инициативи за подобряване качеството на живота на хората.</p>
+<!-- Clinical Trials Section -->
+<div class="clinical-trials">
+    <h2>Информация за Клинични Проучвания</h2>
+    <p>LRS e първият в света инструмент базиран на machine learning, за оценка на риска от рехерниация при пациенти с лумбална дискова херния.</p>
+</div>
+
+<!-- Scrolling Articles Section -->
+<div class="article-section">
+    <h2>Статии и публикации</h2>
+    <div class="articles-wrapper">
+        <div class="article-card">
+            <img src="article1.jpg" alt="Article 1">
+            <h3>Клинично Проучване A</h3>
+            <p>Кратко описание на проучването и неговите резултати.</p>
+            <a href="#">Прочетете повече</a>
+        </div>
+        <div class="article-card">
+            <img src="article2.jpg" alt="Article 2">
+            <h3>Клинично Проучване B</h3>
+            <p>Информация за иновативните методи в това проучване.</p>
+            <a href="#">Прочетете повече</a>
+        </div>
+    </div>
+</div>
+
+<!-- Doctor Information Section -->
+<section class="doctors-section">
+    <h2>Нашите лекари</h2>
+    <div class="doctors-wrapper">
+        <div class="doctor-card">
+            <img src="doctor1.jpg" alt="dr A">
+            <h3>Д-р A</h3>
+            <p>A biography.</p>
+        </div>
+        <div class="doctor-card">
+            <img src="doctor2.jpg" alt="dr B">
+            <h3>Д-р B</h3>
+            <p>B biography.</p>
+        </div>
+        <div class="doctor-card">
+            <img src="doctor3.jpg" alt="dr C">
+            <h3>Д-р C</h3>
+            <p>C biography.</p>
+        </div>
+        <div class="doctor-card">
+            <img src="doctor4.jpg" alt="dr D">
+            <h3>Д-р D</h3>
+            <p>D biography.</p>
+        </div>
+        <div class="doctor-card">
+            <img src="doctor5.jpg" alt="dr E">
+            <h3>Д-р E</h3>
+            <p>E biography.</p>
+        </div>
     </div>
 </section>
 
-<div class="form-container" id="appointmentForm">
-    <h2>Запазете час за консултация</h2>
+<!-- Form Section -->
+<div class="form-container" id="form-section">
     <form>
-        <label for="firstName">Име</label>
-        <input type="text" id="firstName" name="firstName" required>
+        <label class="required-star">Име и Фамилия</label>
+        <input type="text" required>
 
-        <label for="lastName">Фамилия</label>
-        <input type="text" id="lastName" name="lastName" required>
+        <label class="required-star">Пол</label>
+        <select required>
+            <option value="мъж">Мъж</option>
+            <option value="жена">Жена</option>
+        </select>
 
-        <label for="dob">Дата на раждане (ДД:ММ:ГГГГ)</label>
-        <input type="text" id="dob" name="dob" placeholder="например 15.05.1985" required>
+        <label class="required-star">Години</label>
+        <input type="number" required>
 
-        <label for="phone">Телефонен номер</label>
-        <input type="text" id="phone" name="phone" placeholder="например +359 888 888 888 или 0877777777" required>
+        <label class="required-star">Тютюнопушене през последните 2 години</label>
+        <select required>
+            <option value="да">Да</option>
+            <option value="не">Не</option>
+        </select>
 
-        <label for="email">Имейл</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="examType">Вид на прегледа</label>
-        <select id="examType" name="examType" required>
-            <option value="viber">Видеоконсултация чрез Viber</option>
-            <option value="email">Консултация по имейл</option>
-            <option value="phone">Телефонна консултация</option>
-            <option value="live">Преглед на живо</option>
+        <label class="required-star">Диабет</label>
+        <select required>
+            <option value="няма">Няма</option>
+            <option value="тип 1">Тип 1</option>
+            <option value="тип 2">Тип 2</option>
         </select>
 
         <label for="concerns">Кратко описание - моля напишете какви са вашите притеснения, симптоми и оплаквания. Ако имате поставяни диагнози и лечения през годините - споменете и за тях тук.</label>
@@ -135,30 +335,56 @@
         <label for="links">Свързани линкове - ако имате качени вашите документи в интернет платформи като DOX.bg, Google Drive, OneDrive, Dropbox, WeTransfer и т.н, може да ни изпратите линк</label>
         <input type="text" id="links" name="links">
 
-        <label>
-            <input type="checkbox" name="terms" required>
-            Декларирам, че съм прочел <a href="#">Условия за ползване</a> и ги приемам.
-        </label>
 
-        <button type="submit">Изпрати заявка</button>
+        <label class="required-star">Дата на предходна операция</label>
+        <input type="date" required>
+
+        <!-- Modal for Terms -->
+        <div id="termsModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Условия за ползване</h2>
+                <p>Тук са описани условията за ползване на сайта.</p>
+                <button id="close-terms">Затвори</button>
+            </div>
+        </div>
+
+        <label>
+            <input type="checkbox" id="terms-checkbox" required> Приемам <a href="#" id="terms-link">общите условия</a> и се съгласявам с тях
+        </label>
+        <button type="submit">Заяви консултация</button>
     </form>
 </div>
 
+
 <script>
     function scrollToForm() {
-        document.getElementById('appointmentForm').scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('form-section').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    var modal = document.getElementById("termsModal");
+    var termsLink = document.getElementById("terms-link");
+    var closeModal = document.getElementsByClassName("close")[0];
+    var closeTerms = document.getElementById("close-terms");
+
+    termsLink.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    closeModal.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    closeTerms.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
     }
 </script>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/umd/supabase.js"></script>
-<script src="script.js"></script>
-<script>
-    function scrollToForm() {
-        document.getElementById('appointmentForm').scrollIntoView({ behavior: 'smooth' });
-    }
-</script>
-
 
 </body>
 </html>
-
