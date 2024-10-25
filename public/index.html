@@ -75,7 +75,7 @@
 <!-- Form Section -->
 <div class="form-container" id="form-section">
     <h2 class="form-header">Форма за Заявка на Консултация</h2>
-    <form>
+    <form id="appointmentForm">
         <label class="required-star">Име и Фамилия</label>
         <input type="text" required>
         <span class="required-star">*Това поле е задължително.</span>
@@ -113,6 +113,17 @@
         <label for="links">Свързани линкове - ако имате качени вашите документи в интернет платформи като DOX.bg, Google Drive, OneDrive, Dropbox, WeTransfer и т.н, може да ни изпратите линк</label>
         <input type="text" id="links" name="links">
 
+        <!-- Phone Number -->
+        <label class="required-star">Телефонен номер</label>
+        <input type="text" id="phoneNumber" name="phoneNumber" required>
+        <span class="required-star">*Това поле е задължително.</span>
+        <small>Моля въведете 10-цифрен телефонен номер.</small>
+
+        <!-- Email -->
+        <label class="required-star">Имейл</label>
+        <input type="email" id="email" name="email" required>
+        <span class="required-star">*Това поле е задължително.</span>
+
         <label class="required-star">Дата на предходна операция</label>
         <input type="date" required>
         <span class="required-star">*Това поле е задължително.</span>
@@ -133,10 +144,25 @@
         </label>
         <span class="required-star">*Това поле е задължително.</span>
 
-        
         <button type="submit">Заяви консултация</button>
     </form>
 </div>
+
+<script>
+    // Validate phone number field
+    const phoneNumberInput = document.getElementById('phoneNumber');
+    phoneNumberInput.addEventListener('input', function() {
+        const phoneNumber = this.value;
+        const phoneError = this.nextElementSibling;
+        if (phoneNumber.length === 10 && /^\d+$/.test(phoneNumber)) {
+            phoneError.style.display = 'none';
+        } else {
+            phoneError.style.display = 'inline';
+            phoneError.textContent = '*Моля въведете валиден 10-цифрен телефонен номер.';
+        }
+    });
+</script>
+
 
 <script>
 // Scroll to the form when the button in the header is clicked
