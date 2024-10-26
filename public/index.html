@@ -73,9 +73,9 @@
 </section>
 
 <!-- Form Section -->
-<div class="form-container" id="form-section">
+<div class="form-container" id="appointmentForm">
     <h2 class="form-header">Форма за Заявка на Консултация</h2>
-    <form id="appointmentForm">
+    <form>
         <label class="required-star">Име и Фамилия</label>
         <input type="text" required>
         <span class="required-star">*Това поле е задължително.</span>
@@ -167,7 +167,7 @@
 <script>
 // Scroll to the form when the button in the header is clicked
 function scrollToForm() {
-    document.getElementById("form-section").scrollIntoView({ behavior: 'smooth' });
+    document.getElementById("appointmentForm").scrollIntoView({ behavior: 'smooth' });
 }
 
 // Modal handling for terms acceptance
@@ -194,6 +194,9 @@ window.onclick = function(event) {
     }
 }
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/umd/supabase.js"></script>
+<script src="script.js"></script>
+
 
 </body>
 </html>
